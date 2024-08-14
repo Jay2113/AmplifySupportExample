@@ -23,7 +23,7 @@ test:
   phases:
     test:
       commands:
-        - 'npx cypress run || Exit 1'
+        - 'npx cypress run || exit 1'
   artifacts:
     baseDirectory: cypress
     files:
