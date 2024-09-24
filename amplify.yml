@@ -21,20 +21,18 @@ frontend:
       - node_modules/**/*
 test:
   phases:
+    preTest:
+      commands:
+        - npm install mochawesome-merge mochawesome-report-generator
     test:
       commands:
-        - 'npx cypress run || exit 1'
+        - npx cypress run --reporter mochawesome --reporter-options "reportDir=cypress/report/mochawesome-report,overwrite=false,html=false,json=true,timestamp=mmddyyyy_HHMMss"
+    postTest:
+      commands:
+        -  npx mochawesome-merge cypress/report/mochawesome-report/mochawesome*.json > cypress/report/mochawesome.json
   artifacts:
     baseDirectory: cypress
+    configFilePath: '**/mochawesome.json'
     files:
       - '**/*.png'
       - '**/*.mp4'
-    testArtifacts:
-      baseDirectory: cypress/reports
-      files:
-        - '**/*'
-  cache:
-    paths:
-      - .next/cache/**/*
-      - .npm/**/*
-      - .cache/Cypress
