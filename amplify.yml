@@ -14,16 +14,10 @@ frontend:
     baseDirectory: .next
     files:
       - '**/*'
-  cache:
-    paths:
-      - .next/cache/**/*
-      - .npm/**/*
-      - node_modules/**/*
 test:
   phases:
     test:
       commands:
-        - npm run pretest
         - npm run test
   artifacts:
     baseDirectory: cypress
@@ -31,4 +25,4 @@ test:
       - 'reports/report.html'
       - 'reports/mochawesome.json'
       - 'screenshots/**/*'
-      - 'videos/**/*' 
+      - 'videos/**/*'
