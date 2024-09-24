@@ -23,6 +23,7 @@ test:
   phases:
     test:
       commands:
+        - npm run pretest
         - npm run test
     postTest:
       commands:
