@@ -16,6 +16,9 @@ frontend:
       - '**/*'
 test:
   phases:
+    preTest:
+      commands: 
+        - pwd
     test:
       commands:
         - npm run test
@@ -23,6 +26,6 @@ test:
     baseDirectory: cypress
     files:
       - 'reports/report.html'
-      - 'reports/mochawesome.json'
+      - 'reports/.jsons/mochawesome.json'
       - 'screenshots/**/*'
       - 'videos/**/*'
