@@ -25,9 +25,6 @@ test:
       commands:
         - npm run pretest
         - npm run test
-    postTest:
-      commands:
-        - npm run posttest
   artifacts:
     baseDirectory: cypress
     files:
