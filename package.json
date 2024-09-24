@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "cypress run --reporter cypress-mochawesome-reporter --reporter-options reportDir=cypress/reports/.jsons,overwrite=false,html=false,json=true",
+    "posttest": "npm run merge-reports && npm run generate-report",
+    "merge-reports": "mochawesome-merge cypress/reports/.jsons/*.json > cypress/reports/mochawesome.json",
+    "generate-report": "marge cypress/reports/mochawesome.json -f report -o cypress/reports"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^6.1.13",
